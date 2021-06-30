@@ -1,0 +1,23 @@
+# Advertising
+# > General
+ip-cidr, 192.168.0.0/16, direct
+ip-cidr, 10.0.0.0/8, direct
+ip-cidr, 172.16.0.0/12, direct
+ip-cidr, 127.0.0.0/8, direct
+ip-cidr, 100.64.0.0/10, direct
+ip-cidr, 224.0.0.0/4, direct
+ip6-cidr, fe80::/10, direct
+
+host-suffix, ooxx.be, JMS
+host-suffix, jdsharedresourcescdn.azureedge.net, JMS
+host-suffix, cloudinary.com, JMS
+host-suffix, arcteryx.com, JMS
+host, reware-production.yerdlesite.com, JMS
+host-keyword, xj-app.oss-cn-hangzhou.aliyuncs.com, reject
+
+# Netease Music Advertising
+host-suffix, music.126.net, direct
+host,admusicpic.music.126.net,reject
+host,iadmat.nosdn.127.net,reject
+host,iadmusicmat.music.126.net,reject
+host,iadmusicmatvideo.music.126.net,reject
