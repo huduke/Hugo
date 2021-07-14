@@ -156,7 +156,7 @@ function GetTurnLottery(cookie,blackBox) {
         "Host": "fmapp.chinafamilymart.com.cn",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
         "token": cookie,
-        "Referer" : "https://fmapp-activity.chinafamilymart.com.cn/pages/sudokuDrawLottery/index?query=%257B%2522activitycode%2522%253A%25223420210630001%2522%252C%2522activitytype%2522%253A%252234%2522%252C%2522utm_homeIndex%2522%253A%2522home_HB_001_004%2522%257D",
+        "Referer" : "https://fmapp-activity.chinafamilymart.com.cn/pages/sudokuDrawLottery/index?query=%257B%2522activitycode%2522%253A%25223420210630001%2522%252C%2522activitytype%2522%253A%252234%2522%252C%2522utm_homeIndex%2522%253A%2522home_HB_001_005%2522%257D",
       },
       body: {"activityCode":3420210630001,"cityCd":"杭州"},
     };
