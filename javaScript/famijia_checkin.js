@@ -111,11 +111,11 @@ function GetTurnCount(cookie) {
         "Accept-Language": "zh-cn",
         "Connection": "keep-alive",
         "Host": "fmapp.chinafamilymart.com.cn",
-        "Referer" : "https://fmapp-activity.chinafamilymart.com.cn/pages/sudokuDrawLottery/index?query=%257B%2522activitycode%2522%253A%25223420210531001%2522%252C%2522activitytype%2522%253A%252234%2522%252C%2522utm_homeIndex%2522%253A%2522home_HB_001_003%2522%257D",
+        "Referer" : "https://fmapp-activity.chinafamilymart.com.cn/pages/sudokuDrawLottery/index?query=%257B%2522activitycode%2522%253A%25223420210531001%2522%252C%2522activitytype%2522%253A%252234%2522%252C%2522utm_homeIndex%2522%253A%2522home_HB_001_005%2522%257D",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
         "token": cookie,
       },
-      body: {"activityCode":3420210531001,"cityCd":"杭州"},
+      body: {"activityCode":3420210630001,"cityCd":"杭州"},
     };
     magicJS.post(options, (err, resp, data) => {
       if (err) {
@@ -157,7 +157,7 @@ function GetTurnLottery(cookie,blackBox) {
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
         "token": cookie,
       },
-      body: {"activityCode":3420210531001,"cityCd":"杭州"},
+      body: {"activityCode":3420210630001,"cityCd":"杭州"},
     };
     magicJS.post(options, (err, resp, data) => {
       if (err) {
