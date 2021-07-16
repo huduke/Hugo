@@ -187,7 +187,9 @@ function GetTurnLottery(cookie,blackBox) {
     let cookie = magicJS.request.headers.token; //token
     let hisCookie = magicJS.read(famijiaCookieKey); //hisToken
     magicJS.write(famijiaDeviceIdKey, magicJS.request.headers.deviceId);
+    magicJS.notify("deviceId写入成功!! deviceId:" + famijiaDeviceIdKey);
     magicJS.write(famijiaBlackBoxKey, magicJS.request.headers.blackBox);
+    magicJS.notify("blackBox写入成功!! blackBox:" + famijiaBlackBoxKey);
     if (cookie !== hisCookie) {
       magicJS.write(famijiaCookieKey, cookie);
       magicJS.logInfo(`旧的Token：${hisCookie}\n新的Token：${cookie}\nToken不同，写入新的Token成功！`);
