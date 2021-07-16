@@ -261,13 +261,14 @@ function GetTurnLottery(cookie,blackBox) {
         }
       }
       if(turnTime > 0){
+        let blackBoxExt = 'eyJ2IjoiV3JraDVySzlzaGNiNjUzcSsxbWhvS0pLTDlLQllSNTdhdXZaeTdJM3pXdlNRZnhFeUVLNTJLNTIwWU9SSHcxYiIsIm9zIjoid2ViIiwiaXQiOjE2OTgsInQiOiIrVjluT3BXU3p4d25weVlkL3k3OHpDS2ZMMmEram5GN3dOaEd2eFphYXZmOWI0THdmcTB2RUV5c3IxcHo5RlNPTlhqeHBiZDNWL202dFI2dlpaeS9Ldz09In0=';
         for(let i=0; i<turnTime;i++){
-          let [getLotteryErr, getLotteryResult] = await magicJS.attempt(GetTurnLottery(cookie,blackBox));
+          let [getLotteryErr, getLotteryResult] = await magicJS.attempt(GetTurnLottery(cookie,blackBoxExt));
           if (!getLotteryErr) {
             if (content) content += "\n";
             content += `抽到${getLotteryResult.priceInfo.priceTitle}:${getLotteryResult.priceInfo.couponName} `;
           }
-          await magicJS.sleep(3000);
+          await magicJS.sleep(1000);
         }
         content += "\n"
         content += `抽奖机会已用完!`;
