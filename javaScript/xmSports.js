@@ -22,11 +22,11 @@ Surge
 15 17 * * * https://jdsharedresourcescdn.azureedge.net/jdresource/backUp/xmSports.js, tag=小米运动, img-url=https://raw.githubusercontent.com/58xinian/icon/master/xmyd.png, enabled=true
 [rewrite_local]
 # 小米运动获取Token
-^https:\/\/account\.huami\.com\/v2\/client\/login url script-response-body https://jdsharedresourcescdn.azureedge.net/jdresource/backUp/xmSports.js
+^https:\/\/account-cn2\.huami\.com\/v2\/client\/login url script-response-body https://jdsharedresourcescdn.azureedge.net/jdresource/backUp/xmSports.js
 Loon
 [Script]
 cron "15 17 * * *" script-path=https://jdsharedresourcescdn.azureedge.net/jdresource/backUp/xmSports.js, tag=小米运动
-http-response ^https:\/\/account\.huami\.com\/v2\/client\/login script-path=https://jdsharedresourcescdn.azureedge.net/jdresource/backUp/xmSports.js, requires-body=true, timeout=3600, tag=小米运动获取Token
+http-response ^https:\/\/account-cn2\.huami\.com\/v2\/client\/login script-path=https://jdsharedresourcescdn.azureedge.net/jdresource/backUp/xmSports.js, requires-body=true, timeout=3600, tag=小米运动获取Token
  */
 
 const $ = new Env('小米运动');
@@ -36,7 +36,7 @@ const headers = {
   'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
 }
 let login_token = '';
-//需要修改的运动步数波动范围，脚本默认修改步数范围为1w9到2w5
+//需要修改的运动步数波动范围，脚本默认修改步数范围为1w2到1w7
 const step = randomFriendPin($.getdata('xmMinStep')*1 || 12000, $.getdata('xmMaxStep')*1 || 17000);
 function getToken() {
   if ($response.body) {
