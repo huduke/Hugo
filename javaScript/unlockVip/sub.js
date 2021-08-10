@@ -1,11 +1,21 @@
 /*
-通用订阅 unlock vip by 渤涵
-#通用订阅解锁
+微信公众号：ios黑科技
+官方网站：s7aa.cn
+
+圈X:
+
 [rewrite_local]
-^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body tank0426/scripts/sub/sub.js
-[MITM]
+
+通用订阅解锁
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body sub.js
+
+[mitm]
 hostname = buy.itunes.apple.com
+
+
+
 */
+
 
 let body= $response.body;
 var obj = JSON.parse(body);
