@@ -38,11 +38,13 @@ const headers = {
 let login_token = '';
 //需要修改的运动步数波动范围，脚本默认修改步数范围为1w2到1w7
 const step = randomFriendPin($.getdata('xmMinStep')*1 || 12000, $.getdata('xmMaxStep')*1 || 17000);
+
 function getToken() {
   if ($response.body) {
     const body = JSON.parse($response.body);
     const loginToken = body.token_info.login_token;
     $.log(`${$.name}token\n${loginToken}\n`)
+    $.msg(`${$.name}token\n${loginToken}\n`)
     if ($.getdata('xmSportsToken')) {
       $.msg($.name, '更新Token: 成功🎉', ``);
     } else {
@@ -55,10 +57,12 @@ function getToken() {
 
 async function start() {
   login_token = $.getdata('xmSportsToken') ? $.getdata('xmSportsToken') : login_token;
-  // console.log(`login_token:::${login_token}`)
+  //
+  console.log(`login_token:::${login_token}`)
   if (login_token) {
     await get_app_token(login_token);
-    // console.log(`$.tokenInfo${JSON.stringify($.tokenInfo)}`)
+    //
+    console.log(`$.tokenInfo${JSON.stringify($.tokenInfo)}`)
     if ($.tokenInfo && $.tokenInfo.result === 'ok') {
       const {app_token, user_id} = $.tokenInfo.token_info;
       await get_time();
@@ -111,7 +115,7 @@ function change_step(app_token, user_id) {
     })
   })
 }
-
+//https://account-cn.huami.com/v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token=NQVBQFJyQktGHlp6QkpbRl5LRl5qek4uXAQEBAAAAAAsiN43X5JlDXcFFwjjFdqpuuXt9BMfavh3YvL4QqF-xynema5yIuHhErnUUT6RAkJO4WKFSlzmQ4hrp5Q1cNxSASg_BOWclwyx9OMUXgAr1ylIooJQzpMAZEz_I3dKSVw_jTbkT_VruEnN6TJDQ-weFXUchGmQTIaGnT9xENDvyo3YNWNUBStcYneMcT_qp1EPpvYKyFzWrg-R3gx1SaeE&os_version=4.1.0
 function get_app_token(login_token, headers) {
   return new Promise(resolve => {
     $.get({url: `https://account-cn.huami.com/v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token=${login_token}&os_version=4.1.0`, headers}, (err, resp, data) => {
