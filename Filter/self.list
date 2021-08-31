@@ -18,6 +18,7 @@ host,iadmusicmatvideo.music.126.net,reject
 DOMAIN-SUFFIX,t.me, JMS
 DOMAIN-SUFFIX,tdesktop.com, JMS
 DOMAIN-SUFFIX,telegra.ph, JMS
+DOMAIN-SUFFIX,telegram.org,JMS
 DOMAIN-SUFFIX, JMS.me, JMS
 DOMAIN-SUFFIX, JMS.org, JMS
 DOMAIN-SUFFIX,telesco.pe, JMS
