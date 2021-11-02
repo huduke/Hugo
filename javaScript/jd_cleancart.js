@@ -24,8 +24,8 @@ if ($.isNode()) {
     }
     console.log("将需要跳过清理的账号(cookie中的pt_pin)放到变量CleanUsers中，多个用@隔开\n")
     console.log("❗️❗️❗️❗️本脚本会清理购物车所有商品❗️❗️❗️❗️\n")
-    console.log("脚本十秒后开始清理\n")
-    await sleep(10 * 1000)
+    console.log("脚本一秒后开始清理\n")
+    await sleep(1 * 1000)
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i];
