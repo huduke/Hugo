@@ -4,8 +4,8 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @connect      coupon.m.jd.com
-// @include      *://coupon.m.jd.com/coupons/show.action*
+// @connect      prodev.m.jd.com
+// @include      *://prodev.m.jd.com/mall/active/*
 // @icon         https://www.google.com/s2/favicons?domain=jd.com
 // @grant        none
 // ==/UserScript==
@@ -16,8 +16,8 @@
   const ms = +new Date(moment); // 抢购时间毫秒值
   const pre = +new Date(ms - 1000 * 5); // 提前 5 秒钟准备
   const end = +new Date(ms + 1000 * 3); // 3 秒钟之后结束
-  const coupons = document.querySelectorAll('div.coupon-btns');
-  const couponBtn = coupons[0].querySelector('.btn');
+  const coupons = document.querySelectorAll('div.free_coupon_module');
+  const couponBtn = coupons[0].querySelector('a.coupon');
   const reloadedKey = 'reloaded' + moment;
   // 获取服务器时间戳
   const getServerTime = async () => {
