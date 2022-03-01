@@ -51,6 +51,56 @@ function GetCoupon(cookie, productCd) {
   });
 }
 
+function GetCouponByMili(cookie, deviceId, blackBox, realCookie, productCd) {
+  return new Promise((resolve, reject) => {
+    let checkinOptions = {
+      url: "https://fmapp.chinafamilymart.com.cn/api/app/oms/v1/mili/service/order/submit",
+      headers: {
+        "blackBox": blackBox,
+        "Connection": "keep-alive",
+        "Accept-Encoding": "br;q=1.0, gzip;q=0.9, deflate;q=0.8",
+        "smBox": "BagXuq8MKJpHrwfKv1wwclnUvRiLeQ/zk/O6/vukgaeQ7BY+Y5EM+qGtAu97gw1IqcmTf/4hZt17foGhDpIgv8g==",
+        "Content-Type": "application/json",
+        "X-Tingyun-Id": "BJGyT3xJAZQ;c=2;r=1186452551",
+        "deviceId": deviceId,
+        "loginChannel": "app",
+        "os": "ios",
+        "User-Agent": "Fa",
+        "token": cookie,
+        "fmVersion": "2.6.8",
+        "Cookie": realCookie,
+        "Host": "fmapp.chinafamilymart.com.cn",
+        "X-Tingyun": "c=A|lqcuuE0EWj0",
+        "Accept": "*/*",
+        "Accept-Language": "zh-Hans-CN;q=1.0"
+      },
+      body: {"cityCd":"杭州","num":1,"activityCode":"","activityType":"","productCd":productCd},
+    };
+    magicJS.post(checkinOptions, (err, resp, data) => {
+      if (err) {
+        magicJS.logError(`获取优惠券失败，请求异常：${err}`);
+        reject("❌获取优惠券失败，请求异常，请查阅日志！");
+      } else {
+        try {
+          magicJS.logDebug(`获取优惠券响应结果：${data}`);
+          let obj = typeof data === "string" ? JSON.parse(data) : data;
+          if (obj.code === "200") {
+            resolve([obj.data, ""]);
+          } else if (obj.message) {
+            resolve([null, obj.message]);
+          } else {
+            magicJS.logError(`获取优惠券失败，响应异常：${data}`);
+            reject("❌获取优惠券失败，响应异常，请查阅日志！");
+          }
+        } catch (err) {
+          magicJS.logError(`获取优惠券失败，执行异常：${err}，接口响应：${data}`);
+          reject("❌获取优惠券失败，执行异常，请查阅日志！");
+        }
+      }
+    });
+  });
+}
+
 (async () => {
   if (magicJS.isRequest && getCookieRegex.test(magicJS.request.url)) {
     let cookie = magicJS.request.headers.token; //token
@@ -97,7 +147,7 @@ function GetCoupon(cookie, productCd) {
     if (!!!cookie || !!!deviceId) {
       magicJS.logWarning("没有读取到token|deviceId，请先从App中获取一次!");
       magicJS.notify("❓没有读取到有效token|deviceId，请先从App中获取!!");
-    } else {
+    } else { 
       productCd = "P164603888925095230";
       let [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
       if (checkInErr) {
@@ -114,6 +164,13 @@ function GetCoupon(cookie, productCd) {
       }
       productCd = "P164603888905224522";
       [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
+      if (checkInErr) {
+        subTitle = checkInErr;
+      }else {
+        subTitle = message;
+      }
+      productCd = "P164603476271379204";
+      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCouponByMili, 3, 1000)(cookie, deviceId, blackBox, realCookie, productCd), []);
       if (checkInErr) {
         subTitle = checkInErr;
       }else {
