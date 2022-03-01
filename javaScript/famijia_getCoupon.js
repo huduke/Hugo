@@ -89,6 +89,7 @@ function GetCoupon(cookie, productCd) {
   } else {
     let subTitle = "";
     let content = "";
+    let productCd = "";
     let cookie = magicJS.read(famijiaCookieKey);
     let realCookie = magicJS.read(famijiaRealCookieKey);
     let blackBox = magicJS.read(famijiaBlackBoxKey);
@@ -97,27 +98,27 @@ function GetCoupon(cookie, productCd) {
       magicJS.logWarning("没有读取到token|deviceId，请先从App中获取一次!");
       magicJS.notify("❓没有读取到有效token|deviceId，请先从App中获取!!");
     } else {
-      let [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, "P164603888925095230"), []);
+      productCd = "P164603888925095230";
+      let [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
       if (checkInErr) {
         subTitle = checkInErr;
       }else {
         subTitle = message;
       }
-
-      let [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, "P164603888922551729"), []);
+      productCd = "P164603888922551729";
+      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
       if (checkInErr) {
         subTitle = checkInErr;
       }else {
         subTitle = message;
       }
-
-      let [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, "P164603888905224522"), []);
+      productCd = "P164603888905224522";
+      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
       if (checkInErr) {
         subTitle = checkInErr;
       }else {
         subTitle = message;
       }
-
       // 通知
       magicJS.notify(scriptName, subTitle, content);
     }
