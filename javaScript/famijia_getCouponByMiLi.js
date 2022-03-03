@@ -7,23 +7,30 @@ const famijiaBlackBoxKey = "famijia_black_box";
 let magicJS = MagicJS(scriptName, "INFO");
 magicJS.unifiedPushUrl = magicJS.read("famijia_unified_push_url") || magicJS.read("magicjs_unified_push_url");
 
-function GetCoupon(cookie, productCd) {
+function GetCouponByMili(cookie, deviceId, blackBox, realCookie, productCd) {
   return new Promise((resolve, reject) => {
     let checkinOptions = {
-      url: "https://fmapp.chinafamilymart.com.cn/api/app/oms/v1/coupon/service/order/submit",
+      url: "https://fmapp.chinafamilymart.com.cn/api/app/oms/v1/mili/service/order/submit",
       headers: {
-        "Accept": "*/*",
-        'Origin' : "https://fmapp-activity.chinafamilymart.com.cn",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+        "blackBox": blackBox,
         "Connection": "keep-alive",
+        "Accept-Encoding": "br;q=1.0, gzip;q=0.9, deflate;q=0.8",
+        "smBox": "BcpwN1pXxIqjaj4nWMA2DSWVeQc/bI5ttEz2tkfmb/i6kyTECwmBK3iToyOC10dH2TvHEHCVFXPj1qH8uzhDWgA==",
         "Content-Type": "application/json",
-        "Host": "fmapp.chinafamilymart.com.cn",
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+        "X-Tingyun-Id": "BJGyT3xJAZQ;c=2;r=1632621729",
+        "deviceId": deviceId,
+        "loginChannel": "app",
+        "os": "ios",
+        "User-Agent": "Fa",
         "token": cookie,
-        "Referer": "https://fmapp-activity.chinafamilymart.com.cn/"
+        "fmVersion": "2.6.8",
+        "Cookie": realCookie,
+        "Host": "fmapp.chinafamilymart.com.cn",
+        "X-Tingyun": "c=A|lqcuuE0EWj0",
+        "Accept": "*/*",
+        "Accept-Language": "zh-Hans-CN;q=1.0"
       },
-      body: {"activityNo":"MjAyMDExMjcwMDE1","productCd":productCd,"cityCd":"杭州","channelCd":"APP","anonymousID":"1757eacf63e7c8-03f44e8c5cfa298-734c1351-304704-1757eacf63fba5"},
+      body: {"cityCd":"杭州","num":1,"activityCode":"","activityType":"","productCd":productCd},
     };
     magicJS.post(checkinOptions, (err, resp, data) => {
       if (err) {
@@ -74,7 +81,7 @@ function GetCoupon(cookie, productCd) {
     } else {
       magicJS.logInfo("Cookie没有变化，无需更新! ");
     }
-  } else {
+  }  else {
     let subTitle = "";
     let content = "";
     let productCd = "";
@@ -86,15 +93,8 @@ function GetCoupon(cookie, productCd) {
       magicJS.logWarning("没有读取到token|deviceId，请先从App中获取一次!");
       magicJS.notify("❓没有读取到有效token|deviceId，请先从App中获取!!");
     } else { 
-      productCd = "P164603888925095230";
-      let [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
-      if (checkInErr) {
-        subTitle = checkInErr;
-      }else {
-        subTitle = message;
-      }
-      productCd = "P164603888922551729";
-      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCoupon, 3, 1000)(cookie, productCd), []);
+      productCd = "P164603476271379204";
+      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCouponByMili, 3, 1000)(cookie, deviceId, blackBox, realCookie, productCd), []);
       if (checkInErr) {
         subTitle = checkInErr;
       }else {
