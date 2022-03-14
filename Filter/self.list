@@ -7,13 +7,6 @@ host-suffix, arcteryx.com, JMS
 host, reware-production.yerdlesite.com, JMS
 host-keyword, xj-app.oss-cn-hangzhou.aliyuncs.com, reject
 
-# Netease Music Advertising
-host-suffix, music.126.net, direct
-host,admusicpic.music.126.net,reject
-host,iadmat.nosdn.127.net,reject
-host,iadmusicmat.music.126.net,reject
-host,iadmusicmatvideo.music.126.net,reject
-
 # Telegram
 DOMAIN-SUFFIX,t.me, JMS
 DOMAIN-SUFFIX,tdesktop.com, JMS
@@ -64,5 +57,70 @@ USER-AGENT,AVOS*,REJECT
 # > 贴吧AD处理
 IP-CIDR,180.76.76.200/32,REJECT
 HOST,im.tieba.baidu.com,REJECT
+
+#福利网站去广告
+#https://qa666.xyz?tg=1959655
+host, www.govchengdu.cn, reject
+host, aig.aigzg.com, reject
+host, pv.dakawm.cc, reject
+host, www.govxian.cn, reject
+
+#水果派去广告
+host, errlog.umeng.com, reject
+host, ulogs.umengcloud.com, reject
+
+#Logolabn去广告
+host, kksdk.tapque.com, reject
+host, omsdkapi.tapque.com, reject
+host, sdk.kkpromotion.tapque.com, reject
+#appcake去广告
+host, sdk.adtiming.com, reject
+
+#网络播放去广告
+host, googleads.g.doubleclick.net, reject
+#看吧去广告
+#下载地址：https://kanba.app
+host, ulogs.umeng.com, reject
+host, plbslog.umeng.com, reject
+
+#桔子去广告
+#桔子网址：https://jzavbus.com
+host, ap.91adv.com.cn, reject
+
+#快活
+host, search1.kuaihuoapi.com, reject
+
+#阅友去广告
+host, ads.reader.yueyouxs.com, reject
+
+#人人视频
+host, mdapi.opsvwa.xyz, reject
+host, mdapi.lyvsas.fun, reject
+host, mdapi.mdlzyx.me, reject
+host, avapp.calvapib.me, reject
+host, avapp.calvapic.me, reject
+host, avapp.calvapid.me, reject
+
+#人人视频
+host, eleven.bayescom.cn, reject
+host, cloudconf.fengkongcloud.com, reject
+host, v2.gdt.qq.com, reject
+host, ulogs.umeng.com, reject
+host, adashxgc.ut.taobao.com, reject
+host, www.qchannel01.cn, reject
+host, sf6-fe-tos.pglstatp-toutiao.com, reject
+host, api-access.pangolin-sdk-toutiao.com, reject
+host, av1.xdrig.com, reject
+host, sdk.e.qq.com, reject
+
+#小小影视去广告
+host, acf.huaerdadi.com, reject
+host, ios.bugly.qq.com, reject
+host, p.juxuyun.com, reject
+
+# 绕过企业证书过期
+host, ocsp.apple.com, reject
+#YouTube 去底部广告
+host-suffix, ehg-youtube.hitbox.com, reject
 
 
