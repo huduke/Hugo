@@ -1,24 +1,24 @@
 # ---(Apple)---
-DOMAIN-SUFFIX,appsto.re,JMS
-DOMAIN,books.itunes.apple.com,JMS
-DOMAIN,api-glb-sea.smoot.apple.com,JMS
-DOMAIN,beta.music.apple.com,JMS
-DOMAIN,tv.apple.com,JMS
+DOMAIN-SUFFIX,appsto.re
+DOMAIN,books.itunes.apple.com
+DOMAIN,api-glb-sea.smoot.apple.com
+DOMAIN,beta.music.apple.com
+DOMAIN,tv.apple.com
 
 # > App Store Web Preview
-DOMAIN,apps.apple.com,JMS
-DOMAIN,itunes.apple.com,JMS
+DOMAIN,apps.apple.com
+DOMAIN,itunes.apple.com
 
 # > Look Up
-DOMAIN-SUFFIX,smoot.apple.com,JMS
-DOMAIN,lookup-api.apple.com,JMS
+DOMAIN-SUFFIX,smoot.apple.com
+DOMAIN,lookup-api.apple.com
 
 # > Apple
-DOMAIN,appleid.apple.com,JMS
-DOMAIN,developer.apple.com,JMS
-DOMAIN,www.icloud.com,JMS
-DOMAIN,ocsp.apple.com,JMS
-DOMAIN,xp.apple.com,JMS
+DOMAIN,appleid.apple.com
+DOMAIN,developer.apple.com
+DOMAIN,www.icloud.com
+DOMAIN,ocsp.apple.com
+DOMAIN,xp.apple.com
 
 # > Apple
-DOMAIN,testflight.apple.com,JMS
+DOMAIN,testflight.apple.com
