@@ -12,36 +12,40 @@
 // ==/UserScript==
 
 (function() {
+    //每1分钟修改静态参数
     const intervalId = setInterval(() => {
-        console.log(`it is running...`);
+        console.log(`修改静态参数...`);
         //alert(navigator.userAgent);
         runminutes = 8;
         mouse_minutes = 300;
-    }, 60000);
+    }, 60000); 
+    //每30秒检查是否暂停
     const intervalIds = setInterval(() => {
-        console.log(`it is checking...`);
-          if(jQuery('.pv-controls-left button')[0].className.indexOf("pv-icon-pause") < 0 ){
-              setTimeout(3000); // 等加载出来
-              //首次进入界面是暂停的，需要手动播放；
+        console.log(`检查是否暂停...`);
+          var className = document.getElementsByClassName('pv-playpause')[0].className;
+          if(className.indexOf("pv-icon-pause") < 0 ){
+              //等加载出来
+              setTimeout(5000);
+              //刷新界面后是暂停的，需要手动播放；
               player.HTML5.play();
           }
     }, 30000);
 
-    var cwidArrayOri = ['1353','1799','4198','3811','2723','2724','2725','4555','3235','2702','2703','3670','3454','3230'];
-    GM_setValue('cwidArrayOri', cwidArrayOri);
+    //需要看的视频
+    var cwidArray = ['4198','3811','2723','2724','2725','4555','3235','2702','2703','3670','3454','3230'];
     const intervalIdss = setInterval(() => {
-      console.log(`it is working...`);
-      Array.prototype.remove = function(val) {
-        var index = this.indexOf(val);
-        if (index > -1) {
-            this.splice(index, 1);
-        }
-      };
-      var cwid = "";
+      console.log(`工作中...`);
+      // Array.prototype.remove = function(val) {
+      //   var index = this.indexOf(val);
+      //   if (index > -1) {
+      //       this.splice(index, 1);
+      //   }
+      // };
       var flag = 0;
+      var cwid = "";
       var url = "/c/public/showflashvideo.jsp?tid=4078&cwid=";
       var urlNow = "";
-      var urlFor = "";
+      var urlNext = "";
       var vars = window.location.search.substring(1).split("&");
       //获取cwid
       for (var i=0;i<vars.length;i++) {
@@ -51,40 +55,35 @@
               console.log('cwid=' + cwid);
           }
       }
-      //
-      var cwidArray = [];
-      if(!GM_getValue('cwidArray')){
-
-      }else{
-        cwidArray = GM_getValue('cwidArray');
-      }
       for (var n=0;n<cwidArray.length;n++) {
           if(cwid == cwidArray[n]){
               flag = 1;
-              cwidArray.remove(cwid);
-              GM_setValue('cwidArray', cwidArray);
+              //cwidArray.remove(cwid);
+              GM_setValue('cwidNow', cwid);
               urlNow = url + cwid;
-              if(cwidArray.length>0){
-                  urlFor = url + cwidArray[0];
-              }else{
-                  urlFor = urlNow;
-              }
               console.log('正在播放:' + urlNow);
-              console.log('将要播放:' + urlFor);
-              GM_setValue('urlFor', urlFor);
+              if(n != cwidArray.length-1){
+                GM_setValue('cwidNext', cwidArray[n+1]);
+                urlNext = url + cwidArray[n+1];
+                GM_setValue('urlNext', urlNext);
+                console.log('将要播放:' + urlNext);
+              }else{
+                GM_setValue('cwidNext', null);
+                console.log('播放列表已结束');
+              }
           }
       }
       //
       if(flag == 0){
-          if(cwidArray.length>0){
-            // var len = cwidArray.length;
-            // var m = Math.floor(Math.random() * len);
-            //url = "/c/public/showflashvideo.jsp?tid=4078&cwid=" + cwidArray[m];
-            var urlNext = GM_getValue('urlFor');
+      // var len = cwidArray.length;
+      // var m = Math.floor(Math.random() * len);
+      //url = "/c/public/showflashvideo.jsp?tid=4078&cwid=" + cwidArray[m];       
+        if (typeof GM_getValue("cwidNext") != 'object') {
+            var urlNext = GM_getValue('urlNext');
             console.log('未在播放列表，将要播放:' + urlNext);
             setTimeout(3000);
             window.location.href = urlNext ;
-          }
+        }
       }
       }, 60000);
   })();
