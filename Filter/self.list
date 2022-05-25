@@ -1,31 +1,11 @@
 # Advertising
 # > General
-host-suffix, ooxx.be, JMS
-host-suffix, jdsharedresourcescdn.azureedge.net, JMS
-host-suffix, cloudinary.com, JMS
-host-suffix, arcteryx.com, JMS
-host, reware-production.yerdlesite.com, JMS
+host-suffix, ooxx.be, PROXY
+host-suffix, jdsharedresourcescdn.azureedge.net, PROXY
+host-suffix, cloudinary.com, PROXY
+host-suffix, arcteryx.com, PROXY
+host, reware-production.yerdlesite.com, PROXY
 host-keyword, xj-app.oss-cn-hangzhou.aliyuncs.com, reject
-
-# Telegram
-DOMAIN-SUFFIX,t.me, JMS
-DOMAIN-SUFFIX,tdesktop.com, JMS
-DOMAIN-SUFFIX,telegra.ph, JMS
-DOMAIN-SUFFIX,telegram.org,JMS
-DOMAIN-SUFFIX, JMS.me, JMS
-DOMAIN-SUFFIX, JMS.org, JMS
-DOMAIN-SUFFIX,telesco.pe, JMS
-IP-CIDR,91.108.4.0/22, JMS
-IP-CIDR,91.108.8.0/22, JMS
-IP-CIDR,91.108.12.0/22, JMS
-IP-CIDR,91.108.16.0/22, JMS
-IP-CIDR,91.108.20.0/22, JMS
-IP-CIDR,91.108.56.0/22, JMS
-IP-CIDR,95.161.64.0/20, JMS
-IP-CIDR,149.154.160.0/20, JMS
-IP6-CIDR,2001:b28:f23d::/48, JMS
-IP6-CIDR,2001:b28:f23f::/48, JMS
-IP6-CIDR,2001:67c:4e8::/48, JMS
 
 # > 知乎AD屏蔽
 DOMAIN,118.89.204.198,REJECT
