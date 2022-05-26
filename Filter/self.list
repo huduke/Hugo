@@ -15,7 +15,6 @@ DOMAIN,appcloud2.in.zhihu.com,REJECT
 USER-AGENT,AVOS*,REJECT
 
 # > 贴吧AD处理
-IP-CIDR,180.76.76.200/32,REJECT
 HOST,im.tieba.baidu.com,REJECT
 
 #福利网站去广告
