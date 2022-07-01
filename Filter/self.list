@@ -7,41 +7,6 @@ host-suffix, arcteryx.com, PROXY
 host, reware-production.yerdlesite.com, PROXY
 host-keyword, xj-app.oss-cn-hangzhou.aliyuncs.com, reject
 
-# > 知乎AD屏蔽
-DOMAIN,118.89.204.198,REJECT
-DOMAIN-KEYWORD,118.89.204.198,REJECT
-IP-CIDR,118.89.204.198/32,REJECT
-DOMAIN,appcloud2.in.zhihu.com,REJECT
-USER-AGENT,AVOS*,REJECT
-
-# > 贴吧AD处理
-HOST,im.tieba.baidu.com,REJECT
-
-#福利网站去广告
-#https://qa666.xyz?tg=1959655
-host, www.govchengdu.cn, reject
-host, aig.aigzg.com, reject
-host, pv.dakawm.cc, reject
-host, www.govxian.cn, reject
-
-#水果派去广告
-host, errlog.umeng.com, reject
-host, ulogs.umengcloud.com, reject
-
-#Logolabn去广告
-host, kksdk.tapque.com, reject
-host, omsdkapi.tapque.com, reject
-host, sdk.kkpromotion.tapque.com, reject
-#appcake去广告
-host, sdk.adtiming.com, reject
-
-#网络播放去广告
-host, googleads.g.doubleclick.net, reject
-#看吧去广告
-#下载地址：https://kanba.app
-host, ulogs.umeng.com, reject
-host, plbslog.umeng.com, reject
-
 #桔子去广告
 #桔子网址：https://jzavbus.com
 host, ap.91adv.com.cn, reject

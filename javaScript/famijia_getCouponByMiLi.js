@@ -93,7 +93,14 @@ function GetCouponByMili(cookie, deviceId, blackBox, realCookie, productCd) {
       magicJS.logWarning("没有读取到token|deviceId，请先从App中获取一次!");
       magicJS.notify("❓没有读取到有效token|deviceId，请先从App中获取!!");
     } else { 
-      productCd = "P164603476271379204";
+      productCd = "P165647129864369904";
+      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCouponByMili, 3, 1000)(cookie, deviceId, blackBox, realCookie, productCd), []);
+      if (checkInErr) {
+        subTitle = checkInErr;
+      }else {
+        subTitle = message;
+      }
+      productCd = "P165647129866138305";
       [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCouponByMili, 3, 1000)(cookie, deviceId, blackBox, realCookie, productCd), []);
       if (checkInErr) {
         subTitle = checkInErr;
