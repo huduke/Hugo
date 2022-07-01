@@ -100,13 +100,6 @@ function GetCouponByMili(cookie, deviceId, blackBox, realCookie, productCd) {
       }else {
         subTitle = message;
       }
-      productCd = "P165647129866138305";
-      [checkInErr, [data, message]] = await magicJS.attempt(magicJS.retry(GetCouponByMili, 3, 1000)(cookie, deviceId, blackBox, realCookie, productCd), []);
-      if (checkInErr) {
-        subTitle = checkInErr;
-      }else {
-        subTitle = message;
-      }
       // 通知
       magicJS.notify(scriptName, subTitle, content);
     }
